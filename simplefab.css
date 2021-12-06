@@ -1,0 +1,105 @@
+.sfab {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.sfab,
+.sfab__toggle,
+.sfab__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sfab__toggle,
+.sfab__item {
+    background: white;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .15);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.sfab__item {
+    position: absolute;
+    width: 2.85rem;
+    height: 2.85rem;
+    transition: 0.5s;
+}
+
+.sfab[data-fab-speed="fast"] .sfab__item {
+    transition: 0.25s;
+}
+
+.sfab[data-fab-speed="normal"] .sfab__item {
+    transition: 0.5s;
+}
+
+.sfab[data-fab-speed="slow"] .sfab__item {
+    transition: 0.75s;
+}
+
+.sfab__item:hover {
+    color: red;
+}
+
+/* Line mode */
+.sfab[data-fab-type="left"].active .sfab__item {
+    transform: translateX(calc(-50px * var(--i) - 4rem));
+}
+
+.sfab[data-fab-type="right"].active .sfab__item {
+    transform: translateX(calc(50px * var(--i) + 4rem));
+}
+
+.sfab[data-fab-type="top"].active .sfab__item {
+    transform: translateY(calc(-50px * var(--i) - 4rem));
+}
+
+.sfab[data-fab-type="bottom"].active .sfab__item {
+    transform: translateY(calc(50px * var(--i) + 4rem));
+}
+
+/* Circle mode */
+.sfab[data-fab-type="rotate"],
+.sfab[data-fab-type="rounde"] {
+    width: 200px;
+    height: 200px;
+}
+
+.sfab[data-fab-type="rotate"] .sfab__item {
+    left: 0;
+    transform-origin: 100px;
+    transform: rotate(0deg) translateX(80px);
+}
+
+.sfab[data-fab-type="rotate"] .sfab__item i,
+.sfab[data-fab-type="rounde"] .sfab__item i {
+    transform: rotate(calc(-360deg / var(--items-count) * var(--i)));
+}
+
+.sfab[data-fab-type="rotate"].active .sfab__item {
+    transform: rotate(calc(360deg / var(--items-count) * var(--i)));
+}
+
+.sfab[data-fab-type="rounde"].active .sfab__item {
+    transform: rotate(calc(360deg / var(--items-count) * var(--i))) translateX(80px);
+}
+
+.sfab[data-fab-type="rounde"] .sfab__item {
+    transform: translateX(0);
+}
+
+/* Style for toggle button */
+.sfab__toggle {
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    z-index: 10;
+    font-size: 2rem;
+    transition: transform 1.25s;
+}
+
+.sfab.active .sfab__toggle {
+    transform: rotate(315deg);
+}
