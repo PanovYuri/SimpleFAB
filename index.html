@@ -52,7 +52,7 @@
     <main>
         <section>
             <article>
-                <div class="sfab" id="test" data-fab-type="rounde" data-fab-speed="fast">
+                <div class="sfab" id="test" data-fab-type="open" data-fab-time="fast">
                     <div class="sfab__toggle"><i class="bi bi-plus"></i></div>
                     <div class="sfab__item"><i class="bu bi-person"></i></div>
                     <div class="sfab__item"><i class="bu bi-person"></i></div>
@@ -65,7 +65,7 @@
                 </div>
             </article>
             <article>
-                <div class="sfab" data-fab-type="rotate">
+                <div class="sfab" data-fab-type="spin">
                     <div class="sfab__toggle"><i class="bi bi-plus"></i></div>
                     <div class="sfab__item"><i class="bu bi-person"></i></div>
                     <div class="sfab__item"><i class="bu bi-person"></i></div>
@@ -109,19 +109,22 @@
                 </div>
             </article>
             <article>
-                <div class="sfab" data-fab-type="right">
+                <div class="sfab active" data-fab-type="right">
                     <div class="sfab__toggle"><i class="bi bi-plus"></i></div>
                     <div class="sfab__item"><i class="bu bi-person"></i></div>
                     <div class="sfab__item"><i class="bu bi-person"></i></div>
                     <div class="sfab__item"><i class="bu bi-person"></i></div>
-                    <div class="sfab__item"><i class="bu bi-person"></i></div>
+                    <div class="sfab__item">
+                        <i class="bu bi-person"></i>
+                        <p>Профиль</p>
+                    </div>
                 </div>
             </article>
         </section>
     </main>
     <script src="simplefab.js"></script>
     <script>
-        const sfab = new SimpleFAB(document.querySelectorAll('.sfab'))
+        document.querySelectorAll('.sfab').forEach(e => new SimpleFAB(e))
     </script>
 </body>
 </html>

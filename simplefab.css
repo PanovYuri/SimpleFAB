@@ -6,41 +6,65 @@
 
 .sfab,
 .sfab__toggle,
-.sfab__item {
+.sfab__item,
+.sfab__item p {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .sfab__toggle,
-.sfab__item {
+.sfab__item,
+.sfab__item p {
+    position: absolute;
     background: white;
+}
+
+.sfab__toggle,
+.sfab__item {
     box-shadow: 0 0 4px rgba(0, 0, 0, .15);
     border-radius: 50%;
     cursor: pointer;
 }
 
 .sfab__item {
-    position: absolute;
     width: 2.85rem;
     height: 2.85rem;
     transition: 0.5s;
 }
 
-.sfab[data-fab-speed="fast"] .sfab__item {
+.sfab[data-fab-time="fast"] .sfab__item {
     transition: 0.25s;
 }
 
-.sfab[data-fab-speed="normal"] .sfab__item {
+.sfab[data-fab-time="normal"] .sfab__item {
     transition: 0.5s;
 }
 
-.sfab[data-fab-speed="slow"] .sfab__item {
+.sfab[data-fab-time="slow"] .sfab__item {
     transition: 0.75s;
 }
 
 .sfab__item:hover {
     color: red;
+}
+
+.sfab__item i {
+    z-index: 9;
+}
+
+.sfab__item p {
+    left: 0;
+    height: 100%;
+    padding: 0.5rem;
+    border-radius: 20px;
+    padding-left: 2.85rem;
+    z-index: 8;
+    display: none;
+}
+
+.sfab__item:hover p {
+    display: flex;
 }
 
 /* Line mode */
@@ -61,38 +85,37 @@
 }
 
 /* Circle mode */
-.sfab[data-fab-type="rotate"],
-.sfab[data-fab-type="rounde"] {
+.sfab[data-fab-type="spin"],
+.sfab[data-fab-type="open"] {
     width: 200px;
     height: 200px;
 }
 
-.sfab[data-fab-type="rotate"] .sfab__item {
+.sfab[data-fab-type="spin"] .sfab__item {
     left: 0;
     transform-origin: 100px;
     transform: rotate(0deg) translateX(80px);
 }
 
-.sfab[data-fab-type="rotate"] .sfab__item i,
-.sfab[data-fab-type="rounde"] .sfab__item i {
+.sfab[data-fab-type="spin"] .sfab__item i,
+.sfab[data-fab-type="open"] .sfab__item i {
     transform: rotate(calc(-360deg / var(--items-count) * var(--i)));
 }
 
-.sfab[data-fab-type="rotate"].active .sfab__item {
+.sfab[data-fab-type="spin"].active .sfab__item {
     transform: rotate(calc(360deg / var(--items-count) * var(--i)));
 }
 
-.sfab[data-fab-type="rounde"].active .sfab__item {
+.sfab[data-fab-type="open"].active .sfab__item {
     transform: rotate(calc(360deg / var(--items-count) * var(--i))) translateX(80px);
 }
 
-.sfab[data-fab-type="rounde"] .sfab__item {
+.sfab[data-fab-type="open"] .sfab__item {
     transform: translateX(0);
 }
 
 /* Style for toggle button */
 .sfab__toggle {
-    position: absolute;
     width: 4rem;
     height: 4rem;
     z-index: 10;
